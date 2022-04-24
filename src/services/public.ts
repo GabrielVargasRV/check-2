@@ -23,7 +23,15 @@ export const signIn = async (email: string,password: string) => {
         let userCredentials = await signInWithEmailAndPassword(auth,email,password);
         user = userAdapter(userCredentials.user);
         notify('success','Sign in successfully!');
-    }catch(error){
+    }catch(error:any){
+        if(error.code === 'auth/user-not-found'){
+            notify('error','User not found!')
+            return;
+        }
+        if(error.code === 'auth/wrong-password'){
+            notify('error', 'Wrong password!');
+            return;
+        }
         notify('error','Something went wrong :(.');
     }
 
@@ -35,7 +43,7 @@ export const createUser = async (email: string, password: string, name: string):
 
     try{
         const userCredentials = await createUserWithEmailAndPassword(auth,email,password);
-        user = userAdapter(userCredentials.user);
+        user = userAdapter({...userCredentials.user, displayName: name});
         notify('success','User created successfully!');
     }catch(error){
         notify('error', 'something went wrong :(.');

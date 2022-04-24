@@ -25,7 +25,7 @@ export const getTodos = async (uid: string): Promise<Todo[]> => {
 export const addTodo = async (todo:Todo) => {
     try{
         await setDoc(doc(db, "todos", todo.id), todo);
-        notify('success','Todo added successfully!');
+        notify('success','Task added successfully!');
     }catch(error){
         notify('error','Something went wrong :(.');
     }

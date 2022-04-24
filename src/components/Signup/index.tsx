@@ -1,13 +1,14 @@
 import {useState} from 'react';
 import styles from "./styles.module.css";
 import {Props,FormData} from "./models";
-
+import {createUser} from "../../services/public";
 
 const Signup: React.FC<Props> = ({setOnLogin}) => {
     const [formData,setFormData] = useState<FormData>({name:"",email:"",password:""});
 
     const handleOnSubmit = (e: React.FormEvent) => {
-
+        e.preventDefault();
+        createUser(formData.email,formData.password,formData.name);
     }
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
