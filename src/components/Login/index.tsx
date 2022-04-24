@@ -1,5 +1,4 @@
 import { ComponentType, Dispatch, SetStateAction,useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { connect, Matching } from "react-redux";
 import styles from "./styles.module.css";
 import appendData from "../../redux/actions";
@@ -22,7 +21,6 @@ const Login:ComponentType<Matching<{ user: User | null; } & { appendData: (type:
         user
     }) => {
 
-    const navigate = useNavigate();
     const [formData,setFormData] = useState({password:"",email:""})
 
     const handleOnSubmit = async (e: React.FormEvent): Promise<void> => {
@@ -44,7 +42,7 @@ const Login:ComponentType<Matching<{ user: User | null; } & { appendData: (type:
             {user ? (
             <>
                 <img className={styles.user_photo} src={user.photoURL} alt="" />
-                <button className={styles.signin_button} onClick={() => navigate('/')} >Continue as {user.username}</button>
+                <button className={styles.signin_button} onClick={() => {}} >Continue as {user.username}</button>
                 <button className={styles.switch_account_button} >Switch Account</button>
             </>) : (
                 <>

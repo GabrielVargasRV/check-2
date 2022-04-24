@@ -1,11 +1,10 @@
-import {User,Todo} from "../models"
-import userAvatar from "../assets/user_avatar.png";
+import {User,Todo} from "../models";
 
 export const userAdapter = (res: any):User => {
     let user:User = {
         username: '',
         email: '',
-        photoURL: userAvatar,
+        photoURL: 'https://ccbs.uci.edu/wp-content/uploads/sites/3/2022/03/no-user-image-icon-27.png',
         uid: '',
     };
 

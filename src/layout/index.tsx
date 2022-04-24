@@ -1,4 +1,4 @@
-import Header from "../components/Header/index";
+import Header from "../components/Header";
 import {Props} from "./models";
 
 const Layout: React.FC<Props> = ({children}) => {

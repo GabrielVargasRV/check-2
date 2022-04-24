@@ -26,7 +26,7 @@ const CreateTodo: React.FC<Props> = ({id,close,todos}) => {
             <div className={styles.container} >
             <div className={styles.header} >
                 <i style={{ width: 30 + 'px', }} ></i>
-                <p className={styles.title} >Create Today Task</p>
+                <p className={styles.title} >{id ? 'Update task' : 'Create task'}</p>
                 <motion.button whileHover={{borderRadius: "15px"}} className={styles.close_btn} onClick={() => close()} >
                     <i className={`fas fa-times`}  ></i>
                 </motion.button>
