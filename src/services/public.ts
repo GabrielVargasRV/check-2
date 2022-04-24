@@ -17,7 +17,7 @@ export const signInWithGoogle = async (): Promise<User | null> => {
     return user;
 }
 
-export const signIn = async (email: string,password: string) => {
+export const signIn = async (email: string,password: string): Promise<User | null> => {
     let user: User | null = null;
     try{
         let userCredentials = await signInWithEmailAndPassword(auth,email,password);
@@ -26,11 +26,11 @@ export const signIn = async (email: string,password: string) => {
     }catch(error:any){
         if(error.code === 'auth/user-not-found'){
             notify('error','User not found!')
-            return;
+            return null;
         }
         if(error.code === 'auth/wrong-password'){
             notify('error', 'Wrong password!');
-            return;
+            return null;
         }
         notify('error','Something went wrong :(.');
     }
@@ -52,11 +52,15 @@ export const createUser = async (email: string, password: string, name: string):
     return user;
 }
 
-export const signout = (): void => {
+export const signout = (): string => {
+    let res = 'undefined';
     try{
         signOut(auth);
         notify('success','Sign out successfully!');
+        res = 'success';
     }catch(error){
         notify('error', 'something went wrong :(.');
+        res = 'error';
     }
+    return res
 }

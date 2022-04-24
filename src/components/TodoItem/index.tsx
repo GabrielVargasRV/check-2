@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Props} from "./modals";
-import moment from 'moment';
+import * as moment from "moment";
 import styles from "./styles.module.css";
 import {update,deleteTodo} from "../../services/todos";
 
